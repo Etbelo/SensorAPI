@@ -1,2 +1,2 @@
 run:
-	python -W ignore start_api.py
+	python3 -W ignore start_api.py

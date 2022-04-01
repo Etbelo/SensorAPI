@@ -19,9 +19,9 @@ class Temp1Wire(Sensor):
                              '/sys/bus/w1/devices/28-062017b40914/w1_slave',
                              '/sys/bus/w1/devices/28-0120506f5efe/w1_slave']
 
-        self.valid = self.test_generator()
+        self.valid = self.test_sensor()
 
-    def read_one_wire(self, sensor_file):
+    def read_one_wire(self, sensor_file) -> float:
         '''! Open local one-wire sensor file and retrieve its data.
         @param sensor_file Path to sensor file
         @return Temperature as floating point number
@@ -38,7 +38,7 @@ class Temp1Wire(Sensor):
 
         return None
 
-    def get_data(self):
+    def get_data(self) -> str:
         '''! Retrieve temperature data of all registered sensors in JSON format.
         @return Data as python dictionary
         '''
@@ -49,23 +49,24 @@ class Temp1Wire(Sensor):
             value = self.read_one_wire(self.sensor_files[i])
             data[f'sensor_{i}'] = value
 
-        return data
+        return json.dumps(data)
 
-    def test_sensor(self):
+    def test_sensor(self) -> bool:
         '''! Test if data is retrieved from all sensors.
         @return True if generator is active
         '''
 
         data = self.get_data()
+        data_dict = json.loads(data)
 
         success = True
 
-        for sensor in data:
-            success &= data[sensor] != None
+        for sensor in data_dict:
+            success &= isinstance(data_dict[sensor], float)
 
         return success
 
-    def dump_file(self):
+    def dump_file(self) -> None:
         '''! Retrieve temperature data of all registered sensors and saving them 
         as a file.
         '''

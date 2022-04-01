@@ -54,7 +54,9 @@ if __name__ == '__main__':
         try:
             if config[sensor_name]['enable']:
                 wrapper = configure_sensor(wrapper, sensor_name, config[sensor_name])
-        except:
-            pass
+        except Exception as e:
+            print(e)
+
+    print(f'Configured sensors: {list(wrapper.keys())}')
 
     start_app(wrapper)

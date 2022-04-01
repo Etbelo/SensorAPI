@@ -1,0 +1,7 @@
+usb_cam:
+  enable: True
+  resolution: [1024, 768]
+  video_source: 1
+
+temp_1wire:
+  enable: True

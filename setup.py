@@ -9,6 +9,7 @@ setup(
         'opencv_python',
         'PyTurboJPEG',
         'Flask',
+        'flask-cors'
         'v4l2py',
     ]
 )

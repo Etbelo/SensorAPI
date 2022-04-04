@@ -15,7 +15,7 @@ def get():
             wrappers[sensor_name].get_response(),
             mimetype=wrappers[sensor_name].mimetype)
 
-    return flask.Response('Request is not valid')
+    return flask.Response('Request is not valid', status=400)
 
 
 def stream():
@@ -34,7 +34,7 @@ def stream():
         return flask.Response(generator(),
                               mimetype=wrappers[sensor_name].mimetype_stream)
 
-    return flask.Response('Request is not valid')
+    return flask.Response('Request is not valid', status=400)
 
 
 def index():

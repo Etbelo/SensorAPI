@@ -2,14 +2,18 @@ from setuptools import setup
 
 setup(
     name='sensor_api',
-    description='Sensor classes and web interface for web access and streaming.',
+    description='Sensor web interface for data request and streaming.',
+    project_urls={
+        'GitHub': 'https://github.com/Etbelo/SensorAPI'
+    },
+    license='MIT',
     author='Johann Erhard',
     zip_safe=False,
     install_requires=[
-        'opencv_python',
-        'PyTurboJPEG',
         'Flask',
-        'flask-cors'
-        'v4l2py',
+        'Flask_Cors',
+        'Flask-HTTPAuth',
+        'sensor_async@git+https://github.com/Etbelo/SensorAsync.git#egg=sensor_async',
+        'Werkzeug'
     ]
 )

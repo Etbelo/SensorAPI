@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Callable
 
-from sensor_api.sensors.sensor import Sensor
+from sensor_async.sensor import Sensor
 
 
 @dataclass
-class SensorWrapper:
+class WebWrapper:
     '''! Sensor wrapper for web usage. Contains sensor and additional information
     and functionality for web interface, i.g., content types and response converters.
     '''
@@ -21,7 +21,7 @@ class SensorWrapper:
         @return Datatype dependent of sensor type
         '''
 
-        return self.sensor.get_data_safe()
+        return self.sensor.get_data_thread()
 
     def get_stream_response(self):
         '''! Get stream http response using stream_converter
@@ -29,5 +29,5 @@ class SensorWrapper:
         @return Datatype dependent of sensor type and stream_converter
         '''
 
-        data = self.sensor.get_data_safe()
+        data = self.sensor.get_data_thread()
         return self.stream_converter(data)

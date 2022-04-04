@@ -2,7 +2,7 @@ import os
 import argparse
 
 from sensor_api.web_wrapper import WebWrapper
-from sensor_api.auth_methods.web_none import start_app
+from sensor_api.auth_methods.web_url import start_app
 
 import sensor_async.info as SENSOR_INFO
 
@@ -47,6 +47,9 @@ if __name__ == '__main__':
     sensors = SENSOR_INFO.sensors_from_config(args.c)
     wrappers = get_wrappers(sensors)
 
+    tokens = [os.getenv('API_TOKEN')]
+
+    print('Start app using URL_TOKEN authentication')
     print(f'Configured sensors: {list(wrappers.keys())}')
 
-    start_app(args.p, wrappers)
+    start_app(args.p, wrappers, tokens)

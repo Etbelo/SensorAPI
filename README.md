@@ -12,7 +12,7 @@ pip3 install -e .
 
 ## Examples
 
-Webcam streaming with automatic asynchronous data access hanlding. Ensures full framerate for webstreaming when multiple clients access the same stream. Webcam and other sensors can be configured in the config.yaml file as defined in [SensorAsync](https://github.com/Etbelo/SensorAsync) library.
+Webcam streaming with automatic asynchronous data access handling. Ensures full framerate for webstreaming when multiple clients access the same stream. Webcam and other sensors can be configured in the config.yaml file as defined in [SensorAsync](https://github.com/Etbelo/SensorAsync) library.
 
 ### Without Authentication
 

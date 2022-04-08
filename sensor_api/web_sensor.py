@@ -7,7 +7,7 @@ from sensor_async.sensor import Sensor
 @dataclass
 class WebSensor:
     '''! Sensor wrapper for web usage. Contains sensor and additional information
-    and functionality for web interface, i.g., content types and response converters.
+    and functionality for web interface, e.g., content types and response converters.
     '''
 
     sensor: Sensor

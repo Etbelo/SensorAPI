@@ -12,15 +12,17 @@ pip3 install -e .
 
 ## Examples
 
+Webcam streaming with automatic asynchronous data access hanlding. Ensures full framerate for webstreaming when multiple clients access the same stream. Webcam and other sensors can be configured in the config.yaml file as defined in [SensorAsync](https://github.com/Etbelo/SensorAsync) library.
+
 ### Without Authentication
 
-* Start
+* Start app 
 
 ```shell
-make run -C examples/auth_none
+make run-none -C examples/
 ```
 
-* Access Resource
+* Access sensor using terminal or webbrowser
 
 ```shell
 curl "<host>:<port>/get?sensor=webcam" --output "test.jpg"
@@ -33,10 +35,10 @@ curl "<host>:<port>/get?sensor=webcam" --output "test.jpg"
 * Start
 
 ```shell
-make run -C examples/auth_url
+make run-url-token -C examples/
 ```
 
-* Access Resource
+* Access sensor using terminal or webbrowser
 
 ```shell
 curl "<host>:<port>/get?sensor=webcam&token=<api_token>" --output "test.jpg"

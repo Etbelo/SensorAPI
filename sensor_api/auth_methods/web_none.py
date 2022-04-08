@@ -33,6 +33,6 @@ def handle_index():
     return API.index()
 
 
-def start_app(port: int, wrappers: dict) -> None:
-    API.wrappers = wrappers
+def start_app(port: int, sensors: dict) -> None:
+    API.sensors = sensors
     app.run(threaded=True, host='0.0.0.0', port=port, debug=False, use_reloader=False)

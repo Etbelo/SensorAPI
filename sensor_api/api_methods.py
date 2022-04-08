@@ -1,6 +1,6 @@
 import flask
 
-wrappers = None
+sensors = None
 
 
 def get():
@@ -10,10 +10,10 @@ def get():
     '''
 
     sensor_name = flask.request.args.get('sensor', '')
-    if len(sensor_name) > 0 and sensor_name in wrappers:
+    if len(sensor_name) > 0 and sensor_name in sensors:
         return flask.Response(
-            wrappers[sensor_name].get_response(),
-            mimetype=wrappers[sensor_name].mimetype)
+            sensors[sensor_name].get_response(),
+            mimetype=sensors[sensor_name].mimetype)
 
     return flask.Response('Request is not valid', status=400)
 
@@ -25,14 +25,14 @@ def stream():
     '''
 
     sensor_name = flask.request.args.get('sensor', '')
-    if len(sensor_name) > 0 and sensor_name in wrappers:
+    if len(sensor_name) > 0 and sensor_name in sensors:
 
         def generator():
             while True:
-                yield wrappers[sensor_name].get_stream_response()
+                yield sensors[sensor_name].get_stream_response()
 
         return flask.Response(generator(),
-                              mimetype=wrappers[sensor_name].mimetype_stream)
+                              mimetype=sensors[sensor_name].mimetype_stream)
 
     return flask.Response('Request is not valid', status=400)
 
@@ -43,4 +43,4 @@ def index():
     @return Flask response
     '''
 
-    return flask.render_template('index.html', sensors=list(wrappers.keys()))
+    return flask.render_template('index.html', sensors=list(sensors.keys()))

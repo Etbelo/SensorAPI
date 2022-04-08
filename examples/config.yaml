@@ -1,6 +1,7 @@
 Webcam:
   name: 'webcam'
-  video_source: 0
+  video_source: 1
+  type: 2
   resolution: [1280, 720]
 
 SystemResource:

@@ -5,7 +5,7 @@ from sensor_async.sensor import Sensor
 
 
 @dataclass
-class WebWrapper:
+class WebSensor:
     '''! Sensor wrapper for web usage. Contains sensor and additional information
     and functionality for web interface, i.g., content types and response converters.
     '''
@@ -21,7 +21,7 @@ class WebWrapper:
         @return Datatype dependent of sensor type
         '''
 
-        return self.sensor.get_data_thread()
+        return self.sensor.get_data_async_thread()
 
     def get_stream_response(self):
         '''! Get stream http response using stream_converter
@@ -29,5 +29,5 @@ class WebWrapper:
         @return Datatype dependent of sensor type and stream_converter
         '''
 
-        data = self.sensor.get_data_thread()
+        data = self.sensor.get_data_async_thread()
         return self.stream_converter(data)

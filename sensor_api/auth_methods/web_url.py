@@ -55,9 +55,9 @@ def handle_index():
     return API.index()
 
 
-def start_app(port: int, wrappers: dict, tokens: list) -> None:
+def start_app(port: int, sensors: dict, tokens: list) -> None:
     global tokens_
     tokens_ = tokens
 
-    API.wrappers = wrappers
+    API.sensors = sensors
     app.run(threaded=True, host='0.0.0.0', port=port, debug=False, use_reloader=False)
